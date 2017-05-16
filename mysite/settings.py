@@ -27,7 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
+# when the login page is accessed directly, it will redirect a successful login to the top-level index (home page) 
 
+LOGIN_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [

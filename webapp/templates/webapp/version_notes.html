@@ -1,0 +1,11 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+{% for item in notes %}
+	Version: {{ item.version_name }}
+	Notes: {{ item.version_notes }}
+{% endfor %}
+
+<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+
+{% endblock %}

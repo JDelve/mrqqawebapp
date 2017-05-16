@@ -1,0 +1,77 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+
+{% for name in scanner_name %}
+	{{ name.scanner__scanner_name }}
+{% endfor %}
+
+{% for date in date %}
+	{{ date.full_date }}
+{% endfor %}
+
+
+<form action="/webapp/phantom_notes" method="get" align = "center">
+	<div> Phantom:
+		{% for name in phantom %}
+			<input type="hidden" name="phantom_id" value = "{{name.phantom__phantom_id}}" />
+                          
+                            
+			<button type="submit" class="btn">{{name.phantom__phantom_name }} </button>
+
+		{% endfor %}
+	</div>
+</form>
+
+
+
+<form action="/webapp/version_notes" method="get" align = "center">
+	<div> Version: 
+		{% for name in version %}
+			<input type="hidden" name="version_id" value = "{{name.version__version_id}}" />
+                          
+                            
+			<button type="submit" class="btn">{{name.version__version_name }} </button>
+
+		{% endfor %}
+	</div>
+</form>
+
+<form action="/webapp/gradsys_notes" method="get" align = "center">
+	<div> Gradient system:
+		{% for name in gradsys %}
+			<input type="hidden" name="gradsys_id" value = "{{name.gradsys__gradsys_id}}" />
+                          
+                            
+			<button type="submit" class="btn">{{name.gradsys__gradsys_name }} </button>
+
+		{% endfor %}
+	</div>
+</form>
+
+<form action="/webapp/coil_notes" method="get" align = "center">
+	<div> Coil:
+		{% for name in coil %}
+			<input type="hidden" name="coil_id" value = "{{name.coil__coil_id}}" />
+                          
+                            
+			<button type="submit" class="btn">{{name.coil__coil_name }} </button>
+
+		{% endfor %}
+	</div>
+</form>
+
+<table>
+<th>Series</th>
+<th>Series Notes</th>
+<th>Result</th>
+{% for result in results %}
+    <tr><td>{{result.series__series}}</td>
+    <td>{{result.series__series_notes}}</td>
+    <td>{{result.result}}</td>
+{% endfor %}
+</table>
+
+
+<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+{% endblock %}

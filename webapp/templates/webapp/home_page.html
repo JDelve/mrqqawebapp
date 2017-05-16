@@ -1,0 +1,13 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+	<div> Scanner name: <form action="/webapp/scanner_dates" method="get">
+	<select name="scanner_id">
+	{% for scanner in scanner_list %}
+		<option value="{{ scanner.scanner_id }}">{{ scanner.scanner_name }}</option>
+	{% endfor %}
+	</select>
+	<input id="scanner_id" class="btn btn-primary" type="submit" value="GO!" />
+	</form> </div>
+{% endblock %}
+

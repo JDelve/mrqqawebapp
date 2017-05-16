@@ -1,0 +1,12 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+
+
+{% for item in notes %}
+	Coil: {{ item.coil_name }}
+	Notes: {{ item.coil_notes }}
+{% endfor %}
+
+<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+{% endblock %}

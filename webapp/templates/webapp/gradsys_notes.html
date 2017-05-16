@@ -1,0 +1,12 @@
+{% extends "webapp/base.html" %}
+
+{% block content %}
+
+{% for item in notes %}
+	Gradient system: {{ item.gradsys_name }}
+	Notes: {{ item.gradsys_notes }}
+{% endfor %}
+
+<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+
+{% endblock %}
