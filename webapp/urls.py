@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	
-	url(r'^webapp/signup/$', views.signup, name='signup'),
+
 	url(r'^$', views.home_page, name='home_page'),
 	url(r'^webapp/scanner_dates', views.get_dates, name = "scanner_dates"),
 	url(r'^webapp/results', views.date_to_results, name = "date_to_results"),

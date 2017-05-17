@@ -5,19 +5,52 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from django.http import HttpResponseRedirect 
+from django.template.context_processors import csrf
+#def signup(request):
+	#if request.method == 'POST': 
+#		form = UserCreationForm(request.POST)
+#		if form.is_valid():
+#			form.save()
+#			username = form.cleaned_data.get('username')
+#			raw_password = form.cleaned_data.get('password1')
+#			user = authenticate(username=username, password=raw_password)
+#			login(request, user)
+#			return redirect('home')
+#		else:
+#			form = UserCreationForm()
+#		return render(request, 'webapp/signup.html', {'form': form})
+#
+		#form = UserCreationForm(request.POST)
+		#if form.is_valid():
+			#form.save()
+			#username = form.cleaned_data.get('username')
+			#raw_password = form.cleaned_data.get('passwo#rd1')
+			#user = authenticate(username=username, password=raw_password)
+			#login(request, user)
+			#return redirect('/')
+	#	else:
+	#		form = UserCreationForm()
+	#		return render(request, 'accounts/signup.html', {'form': form})
 
-def signup(request):
+
+def register(request):
+	if request.method == 'POST':
 		form = UserCreationForm(request.POST)
 		if form.is_valid():
 			form.save()
-			username = form.cleaned_data.get('username')
-			raw_password = form.cleaned_data.get('password1')
-			user = authenticate(username=username, password=raw_password)
-			login(request, user)
-			return redirect('/')
-		else:
-			form = UserCreationForm()
-			return render(request, 'webapp/signup.html', {'form': form})
+			return HttpResponseRedirect('/accounts/register/complete')
+
+	else:
+		form = UserCreationForm()
+	token = {}
+	token.update(csrf(request))
+	token['form'] = form
+
+	return render_to_response('registration/signup.html', token)
+
+def registration_complete(request):
+	return render_to_response('registration/registration_complete.html')
 
 @login_required
 def home_page(request):

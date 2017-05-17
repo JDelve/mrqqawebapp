@@ -2,7 +2,11 @@
     {% if user.is_authenticated %}
         <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
     {% else %}
-        <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+        <ul>
+			<li><a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"> Log in </span></a></li>
+			<li> <a href="/accounts/register">Register</a> </li>
+		</ul>
+
     {% endif %}
 </div> 
 {% block content %}
