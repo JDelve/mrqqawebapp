@@ -72,6 +72,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+# email backend for generating emails 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587 
+EMAIL_HOST_USER = 'rforrester0295@gmail.com'
+EMAIL_HOST_PASSWORD = 'bbbs0295'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
