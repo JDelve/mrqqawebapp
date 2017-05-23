@@ -25,6 +25,7 @@ SECRET_KEY = '%(o$kdnl3clof+8&fry00t#)^dzylk5)@sl-yymcde!q#$&3ev'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['127.0.0.1']
 
 # when the login page is accessed directly, it will redirect a successful login to the top-level index (home page) 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'webapp',
+	'password_reset',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+
 
 
 # Database
@@ -104,6 +106,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Email password re-set verification 
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mrqqadb'
+EMAIL_HOST_PASSWORD = 'mrqqadb1'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'mrqqaDB Team <noreply@mrqqadb.com>'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
