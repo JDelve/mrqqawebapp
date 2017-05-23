@@ -108,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Email password re-set verification 
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mrqqadb'
-EMAIL_HOST_PASSWORD = 'mrqqadb1'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'databasemrqa'
+EMAIL_HOST_PASSWORD = 'mrqqadb2017!'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'mrqqaDB Team <noreply@mrqqadb.com>'
 
