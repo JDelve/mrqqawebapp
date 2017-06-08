@@ -60,10 +60,10 @@ def date_to_results(request):
 	if query: 
 		results = Results.objects.select_related().filter(date__date_id=query).values('series__series', 'series__series_notes','result')
 		scanner_name =  DateDetails.objects.select_related().filter(date_id=query).values('scanner__scanner_name')
-		phantom = DateDetails.objects.select_related().filter(date_id=query).values('phantom__phantom_name', 'phantom__phantom_id')
-		gradsys = DateDetails.objects.select_related().filter(date_id=query).values('gradsys__gradsys_name', 'gradsys__gradsys_id')
-		coil = DateDetails.objects.select_related().filter(date_id=query).values('coil__coil_name', 'coil__coil_id')
-		version = DateDetails.objects.select_related().filter(date_id=query).values('version__version_name', 'version__version_id')
+		phantom = DateDetails.objects.select_related().filter(date_id=query).values('phantom__phantom_name', 'phantom__phantom_id','phantom__phantom_notes')
+		gradsys = DateDetails.objects.select_related().filter(date_id=query).values('gradsys__gradsys_name', 'gradsys__gradsys_id', 'gradsys__gradsys_notes')
+		coil = DateDetails.objects.select_related().filter(date_id=query).values('coil__coil_name', 'coil__coil_id', 'coil__coil_notes')
+		version = DateDetails.objects.select_related().filter(date_id=query).values('version__version_name', 'version__version_id', 'version__version_notes')
 		date = DateDetails.objects.filter(date_id=query).values('full_date')
 
 		context = {"results": results, "scanner_name":scanner_name, "phantom":phantom, "gradsys":gradsys, "coil":coil, "version":version, "date":date}
@@ -71,64 +71,6 @@ def date_to_results(request):
 	return render(request, 'webapp/results.html', context)
 	
 ############################################## note requests #########################################################
-@login_required
-def phantom_notes(request):
-	query = request.GET.get('phantom_id')
-#	try:
-	query = int(query)
-	#except ValueError:
-#		query = None
-#		results = None
-#	if query:
-	notes = PhantomDetails.objects.filter(phantom_id=query).values('phantom_name', 'phantom_notes')
-	context = {"notes": notes}
-	return render(request, 'webapp/phantom_notes.html', context)
-
-## 
-
-@login_required
-def version_notes(request):
-	query = request.GET.get('version_id')
-#	try:
-	query = int(query)
-	#except ValueError:
-#		query = None
-#		results = None
-#	if query:
-	notes = VersionDetails.objects.filter(version_id=query).values('version_name', 'version_notes')
-	context = {"notes": notes}
-	return render(request, 'webapp/version_notes.html', context)
-
-
-
-##
-
-@login_required
-def gradsys_notes(request):
-	query = request.GET.get('gradsys_id')
-#	try:
-	query = int(query)
-	#except ValueError:
-#		query = None
-#		results = None
-#	if query:
-	notes = GradsysDetails.objects.filter(gradsys_id=query).values('gradsys_name', 'gradsys_notes')
-	context = {"notes": notes}
-	return render(request, 'webapp/gradsys_notes.html', context)
-
-@login_required
-def coil_notes(request):
-	query = request.GET.get('coil_id')
-#	try:
-	query = int(query)
-	#except ValueError:
-#		query = None
-#		results = None
-#	if query:
-	notes = CoilDetails.objects.filter(coil_id=query).values('coil_name', 'coil_notes')
-	context = {"notes": notes}
-	return render(request, 'webapp/coil_notes.html', context)
-
 
 
 

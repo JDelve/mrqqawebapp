@@ -1,17 +1,26 @@
 
- 
- <h2>Sign up</h2>
+{% extends "webapp/base.html" %}
+{% load staticfiles %}
+{% block content %}
 
 
-
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
+<body>
+<div class="container"> 
+	<h2>Sign up</h2>
+	<p>
+		<form method="POST">
+    		{% csrf_token %}
+    		{{ form.as_p }}
+    		<button type="submit">Sign up</button>
+  		</form>
+	</p>
 
 <div>
-<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+	<button onclick="javascript:history.back()" class="back-btn">
+		<span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+	</button>  
 </div>
-
+</div>
+</body>
+{% endblock  %}
 

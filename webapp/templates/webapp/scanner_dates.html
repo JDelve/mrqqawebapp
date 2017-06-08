@@ -1,24 +1,37 @@
-{% extends "webapp/base.html" %}
 
+{% extends "webapp/base.html" %}
+{% load staticfiles %}
 {% block content %}
 
+<body>
+<div class="container">
 {% for result in scanner_notes %}
-	{{result.scanner_name}}
-	{{result.scanner_notes}}
+	<h2>{{result.scanner_name}}</h2>
+	<p class="text-muted">{{result.scanner_notes}}</p>
 {% endfor %}
 
 
 
-<div> Dates: <form action="/webapp/results" method="get">
+<h3> Dates </h3>
+<p>
+<form action="/webapp/results" method="get">
 <select name="date_id">
 {% for result in scanner_dates %}
     <option value="{{ result.date_id }}">{{ result.full_date }}</option>
 {% endfor %}
 </select>
-<input id="date_id" class="btn btn-primary" type="submit" value="GO!" />
-</form> </div>
+<input id="date_id" class="btn" type="hidden"/>
+<button type="submit" class="btn">
+	<span class="glyphicon glyphicon-search"></span>
+</button>
+</form> 
+</p>
 
 
 
-<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+<button onclick="javascript:history.back()" class="btn">
+	<span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+</button> 
+</div>
+</body>
 {% endblock %}

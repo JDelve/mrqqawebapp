@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block title %}Register{% endblock %}
 {% block content %}
-
+<body>
+<div class="container">
   <h2>Registration</h2>
 
   <form action="/accounts/register/" method="post">{% csrf_token %}
@@ -9,5 +11,7 @@
   <input type="submit" value="Register" />
 
   </form>
+</div>
+</body>
 
 {% endblock %}

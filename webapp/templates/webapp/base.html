@@ -1,14 +1,63 @@
-<div class="page-header">
-    {% if user.is_authenticated %}
-        <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
-    {% else %}
-        <ul>
-			<li><a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"> Log in </span></a></li>
-			<li> <a href="/accounts/register">Register</a> </li>
-		</ul>
+{% load staticfiles %}
 
-    {% endif %}
-</div> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MRQADB </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+    html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+	
+</style>
+<body>
+	<div class="jumbotron">
+	<div class = "container">
+	<h1> MR Quarterly QA Database</h1>
+
+	{% if user.is_authenticated %}
+    <div>
+		<form method="get" action="{% url 'logout' %}">
+		<h3>Hello {{ user.username }}<button type="submit" class="btn btn-md">
+			<span class="glyphicon glyphicon-log-out"></span>
+		</button></h3>
+		</form>
+	</div>
+	</div>
+	{% endif %}
+	</div>
+	</div>
+
+</body> 
 {% block content %}
 {% endblock %}
+<body>
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted">Created by R. Forrester</p>
+  </div>
+</footer>
+</body>
 
+
+</html>

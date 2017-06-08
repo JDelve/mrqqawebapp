@@ -1,14 +1,22 @@
-
-
+{% extends "webapp/base.html" %}
+{% load staticfiles %}
 {% block content %}
+<body>
+<div class="container">
   <h2>Login</h2>
+  <p>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit">
+		<span class="glyphicon glyphicon-log-in"></span> Login
+	</button>
   </form>
-<a href="/accounts/register">Register</a>
-<a href="/password_reset">Forgotten password</a>
+</p>
+<p>
+<a href="/accounts/register">Register</a></p>
+</div>
+</body>
 {% endblock %}
 
 

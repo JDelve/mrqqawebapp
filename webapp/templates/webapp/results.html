@@ -1,77 +1,88 @@
 {% extends "webapp/base.html" %}
-
+{% load staticfiles %}
 {% block content %}
+<style>
+.jumbotron {
+	padding: 5px 25px;
+    margin: 0;
+    min-width: 100%;
+}
 
-{% for name in scanner_name %}
-	{{ name.scanner__scanner_name }}
-{% endfor %}
+</style>
 
-{% for date in date %}
-	{{ date.full_date }}
-{% endfor %}
+<body>
+<div class="container">
 
+	<h2>{% for name in scanner_name %}
+		{{ name.scanner__scanner_name }}
+	{% endfor %}:
 
-<form action="/webapp/phantom_notes" method="get" align = "center">
-	<div> Phantom:
-		{% for name in phantom %}
-			<input type="hidden" name="phantom_id" value = "{{name.phantom__phantom_id}}" />
-                          
-                            
-			<button type="submit" class="btn">{{name.phantom__phantom_name }} </button>
+	{% for date in date %}
+		{{ date.full_date }}
+	{% endfor %}</h2>
 
-		{% endfor %}
-	</div>
-</form>
+	<p>
 
+	<dl>
+			
+		<p><dt> Phantom </dt>
+		<dd> 
+			{% for name in phantom %}
+			{{name.phantom__phantom_name}}
+				<a data-toggle="popover" data-trigger="hover"  title='{{ name.phantom__phantom_name }}' data-content={{ name.phantom__phantom_notes }}>
+					<span class="glyphicon glyphicon-new-window" style="color:grey"</span>
+				</a>
+			{% endfor %}</dd></p>
 
+		<p><dt> Version </dt>
+		<dd>
+			{% for name in version %}
+			{{name.version__version_name}}
+				<a data-toggle="popover" data-trigger="hover"  title='{{ name.version__version_name }}' data-content={{ name.version__version_notes }}>
+					<span class="glyphicon glyphicon-new-window" style="color:grey"</span>
+				</a>
+			{% endfor %}</dd></p>
 
-<form action="/webapp/version_notes" method="get" align = "center">
-	<div> Version: 
-		{% for name in version %}
-			<input type="hidden" name="version_id" value = "{{name.version__version_id}}" />
-                          
-                            
-			<button type="submit" class="btn">{{name.version__version_name }} </button>
+		<p><dt> Gradient System </dt>
+		<dd>
+				{% for name in gradsys %}
+				{{name.gradsys__gradsys_name}}
+				<a data-toggle="popover" data-trigger="hover"  title='{{ name.gradsys__gradsys_name }}' data-content='{{ name.gradsys__gradsys_notes }}'>
+					<span class="glyphicon glyphicon-new-window" style="color:grey"</span>
+				</a>
+				{% endfor %}</dd></p>
 
-		{% endfor %}
-	</div>
-</form>
-
-<form action="/webapp/gradsys_notes" method="get" align = "center">
-	<div> Gradient system:
-		{% for name in gradsys %}
-			<input type="hidden" name="gradsys_id" value = "{{name.gradsys__gradsys_id}}" />
-                          
-                            
-			<button type="submit" class="btn">{{name.gradsys__gradsys_name }} </button>
-
-		{% endfor %}
-	</div>
-</form>
-
-<form action="/webapp/coil_notes" method="get" align = "center">
-	<div> Coil:
-		{% for name in coil %}
-			<input type="hidden" name="coil_id" value = "{{name.coil__coil_id}}" />
-                          
-                            
-			<button type="submit" class="btn">{{name.coil__coil_name }} </button>
-
-		{% endfor %}
-	</div>
-</form>
-
-<table>
-<th>Series</th>
-<th>Series Notes</th>
-<th>Result</th>
-{% for result in results %}
-    <tr><td>{{result.series__series}}</td>
-    <td>{{result.series__series_notes}}</td>
-    <td>{{result.result}}</td>
-{% endfor %}
-</table>
-
-
-<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+			<p><dt> Coil </dt>
+			<dd>
+				{% for name in coil %}
+				{{name.coil__coil_name}}
+				<a data-toggle="popover" data-trigger="hover" title='{{ name.coil__coil_name }}' data-content='{{ name.coil__coil_notes }}'>
+					<span class="glyphicon glyphicon-new-window" style="color:grey"</span>
+				</a>
+				{% endfor %}</dd></p>
+<script>
+$(document).ready(function(){
+	$('[data-toggle="popover"]').popover();
+});
+</script>
+	</p>
+	<p>
+	<table class="table table-hover">
+	<th>Series</th>
+	<th>Series Notes</th>
+	<th>Result</th>
+	{% for result in results %}
+		<tr><td>{{result.series__series}}</td>
+		<td>{{result.series__series_notes}}</td>
+		<td>{{result.result}}</td>
+	{% endfor %}
+	</table>
+	</p>
+<div>
+	<button onclick="javascript:history.back()" class="btn">
+		<span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+	</button>  
+</div>
+</div>
+</body>
 {% endblock %}

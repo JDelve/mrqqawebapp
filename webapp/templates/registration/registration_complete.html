@@ -1,8 +1,19 @@
-{% block title %}You are Registered{% endblock %}
+{% extends "webapp/base.html" %}
+{% load staticfiles %}
 {% block content %}
 
-  <h2>Thank you for Registering</h2>
-  <p><a href="/accounts/login/">Please Login</a></p>
+
+<body>
+<div class="container">
+<p>
+<h2>Thank you for registering. You can now <a href="/accounts/login/"> log in</a>. </h2>
+
+
+
+
+</p>
+</div>
+</body>
 
 {% endblock %}
 

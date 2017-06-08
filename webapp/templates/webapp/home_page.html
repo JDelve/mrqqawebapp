@@ -1,13 +1,22 @@
 {% extends "webapp/base.html" %}
-
 {% block content %}
-	<div> Scanner name: <form action="/webapp/scanner_dates" method="get">
-	<select name="scanner_id">
-	{% for scanner in scanner_list %}
-		<option value="{{ scanner.scanner_id }}">{{ scanner.scanner_name }}</option>
-	{% endfor %}
-	</select>
-	<input id="scanner_id" class="btn btn-primary" type="submit" value="GO!" />
-	</form> </div>
+{% load staticfiles %}
+	<body>
+	<div class="container">
+		<h3> Scanner name </h3>
+		<p>
+		<form class="form-inline" action="/webapp/scanner_dates" method="get">
+		<select name="scanner_id">
+		{% for scanner in scanner_list %}
+			<option value="{{ scanner.scanner_id }}">{{ scanner.scanner_name }}</option>
+		{% endfor %}
+		</select>
+		<input id="scanner_id" class="btn btn-md" type="hidden"/>
+		<button type="submit" class="btn">
+			<span class="glyphicon glyphicon-search"></span></button>
+		</form>
+		</p>
+	</div>
+	</body>
 {% endblock %}
 

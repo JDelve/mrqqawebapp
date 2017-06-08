@@ -1,12 +1,18 @@
-{% extends "webapp/base.html" %}
 
+{% extends "webapp/base.html" %}
+{% load staticfiles %}
 {% block content %}
 
-
+<body>
+<div class="container">
 {% for item in notes %}
-	Coil: {{ item.coil_name }}
-	Notes: {{ item.coil_notes }}
+	<h2>Coil: {{ item.coil_name }}</h2>
+	<p class="text-muted">{{ item.coil_notes }}</p>
 {% endfor %}
 
-<button onclick="javascript:history.back()" class="btn">↩ Go Back</button> 
+<button onclick="javascript:history.back()" class="btn">
+	<span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+</button> 
+</body>
+</div>
 {% endblock %}
