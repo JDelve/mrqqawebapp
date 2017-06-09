@@ -6,7 +6,8 @@
 		<h3> Scanner name </h3>
 		<p>
 		<form class="form-inline" action="/webapp/scanner_dates" method="get">
-		<select name="scanner_id">
+		<select required name="scanner_id">
+			<option value="not_valid" selected disabled>-- please select an option --</option>
 		{% for scanner in scanner_list %}
 			<option value="{{ scanner.scanner_id }}">{{ scanner.scanner_name }}</option>
 		{% endfor %}

@@ -29,7 +29,7 @@
 		<dd> 
 			{% for name in phantom %}
 			{{name.phantom__phantom_name}}
-				<a data-toggle="popover" data-trigger="hover"  title='{{ name.phantom__phantom_name }}' data-content={{ name.phantom__phantom_notes }}>
+				<a data-toggle="popover" data-trigger="hover"  title='{{ name.phantom__phantom_name }}' data-content='{{ name.phantom__phantom_notes }}'>
 					<span class="glyphicon glyphicon-new-window" style="color:grey"</span>
 				</a>
 			{% endfor %}</dd></p>
@@ -38,7 +38,7 @@
 		<dd>
 			{% for name in version %}
 			{{name.version__version_name}}
-				<a data-toggle="popover" data-trigger="hover"  title='{{ name.version__version_name }}' data-content={{ name.version__version_notes }}>
+				<a data-toggle="popover" data-trigger="hover"  title='{{ name.version__version_name }}' data-content='{{ name.version__version_notes }}'>
 					<span class="glyphicon glyphicon-new-window" style="color:grey"</span>
 				</a>
 			{% endfor %}</dd></p>

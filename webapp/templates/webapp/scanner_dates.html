@@ -15,10 +15,12 @@
 <h3> Dates </h3>
 <p>
 <form action="/webapp/results" method="get">
-<select name="date_id">
+<select required name="date_id">
+	<option value="not_valid" selected disabled>-- please select an option --</option>
 {% for result in scanner_dates %}
     <option value="{{ result.date_id }}">{{ result.full_date }}</option>
 {% endfor %}
+
 </select>
 <input id="date_id" class="btn" type="hidden"/>
 <button type="submit" class="btn">
