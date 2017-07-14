@@ -23,6 +23,8 @@ Then open web browser and type in the loopback address: 127.0.0.1:8000 and you s
 Once the tests have been finalised and the types of data wanting to be stored in the database are known, it would be useful to develop the design of the mysql database – this could involve adding in more tables to reduce redundancy. This should be very simply to do with the code already supplied. I recommend testing the table joins using some mysql queries first before you migrate this design into Django. 
 To allow multiple users to access the database, the web application should be deployed on a server. Some research will need to be done into the best option to use. A free option for example is pythonanywhere.org which will freely host light-weight projects such as this. The Djangogirls tutorial describes how to launch your webapplication using pythonanywhere. 
 Finally, a way of adding data using the front-end web application would be useful to reduce time and effort. This will require some research but should be do-able – this could be implemented as an administrator privilege. For the time-being, data can be adding using MySQL statements and I recommend doing this using MySQL workbench. 
+To make the process of transferring results from the tests to the database a link could be developed which does this automatically, thus reducing the risk of human-error. 
+A summary report output from the database which will generate reports that can be used for audit purposes. 
 
 
 
